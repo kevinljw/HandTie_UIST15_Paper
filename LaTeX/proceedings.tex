@@ -112,13 +112,7 @@
 \section{Introduction}
 Hand gestures have become popular and powerful means of human computer interface nowadays.
 Gesture interaction can serve as an effective and natural modality to communication between humans and computers.
-However, the key problem in gesture interaction is how to make hand gestures understood by the computer. %保留這句原意，但幫修改句構（因抄來的，前兩句不用）
-
-% Gesture interaction offers more effective expression and complements verbal communication in a conversation.
-%Gesture interaction can serve as a complementary modality to communication to express ones ideas.
-
-% According to the sensor's target position on the hand, there are many on-body gestural interfaces which can mainly be classified into two categories:(1) interfaces based on the finger's measurement , (2) interfaces based on wrist or arm measurement.
-%see figureX
+However, the key problem in gesture interaction is how to make hand gestures understood by the computer. 
 
 Based on the source of the sensor's input signal, numerous on-body gestural interfaces can mainly be classified into three categories: (1) interfaces measuring physical movement directly from fingers, (2) interfaces measuring physical properties from wrist, (3) interfaces measuring physical properties from arm. See \autoref{fig:HandTarget}.
 
@@ -139,49 +133,9 @@ Arm-based gestural interfaces employ electromyographical sensing technique where
 
 Among the previous works, \autoref{fig:HandTarget} shows the three common body parts as the input signal sources of various sensing techniques. It is concluded that in general the closer the source is to the fingers, the greater the accuracy rate of finer gesture recognition is obtained, and vice versa. For practical usage, a tradeoff (e.g., measurement accuracy versus comfort, measurement accuracy versus expense, computational overhead versus comfort) must be considered among the countless related works. In this work, we manage to combine the beneficial characteristics of these works through a different approach by exploring another potential body part as an input source other than those listed in \autoref{fig:HandTarget}. That is the back of hand.
 
-% To gather high accuracy information of hand movements, one approach is to instrument the hand with a glove-based gestural interface which is equipped with a number of sensors which provide information about hand position, orientation, and bending angles of fingers. Although these data glove-like systems are different in sensor technologies, locations, and mounting, they all share three basic design concepts: they measure finger joint bending, use a cloth for supporting sensors, and are usually meant to be general-purpose devices \cite{4539650}. 
-
-%我覺得需要利用citation的方式明確舉例work
-% Although most of these finger-based systems provide high accuracy, high reliability, and high capability in measuring the degrees-of-freedom (DoF) of human hands, they suffered from several drawbacks. Major limitations originated from the cloth support, which acted as a constraint on the user’s hand. For instance, they have to be worn on the fingers to measure the flex of the fingers. Such complications may reduce dexterity of the hand. Additionally, these systems can be complex, expensive, and cumbersome for users.
-% The constraints of traditional glove-based systems make them poor candidates for use in mobile applications. 
-
-%一樣，需要利用citation的方式明確舉例work
-%On the other hand, From another approach
-% In the past couple of years, a number of gestural interfaces for alphanumerical character entry in wearable and portable computers have been proposed. Since these devices are usually worn on the wrist or arm, they introduce a unique opportunity to understand user’s arm, hand and possibly finger movements. While all these devices stand out for their originality and overcome some of the limitations of the data glove-like devices(e.g., most have no cloth), they have individual limitations. Additionally, they were designed for specific applications rather than for general purpose. Although they may be suitable for gesture-based applications outside the wearable and portable computer area due to their accessibility, they appear to be unsuitable for applications that require high measurement performance and the diversity of gesture types.
-
-% In the past, when we have to determine which gestural interface to be used, there is a tradeoff between the accuracy of measurements and portability. Apparently, there are some new techniques usually act differently between the glove-based systems and gestural interfaces in wearable and portable computers and even combine the beneficial characteristics of both systems.
-
-%是否需要強調：「我們試圖用最小的覆蓋面積，達到手背的最大使用」
-% \getTitleName\ is an elegant and powerful gestural interface that shared the beneficial characteristics of BOTH systems. both???你的系統有哪些？這樣有點ambiguous!
-% 以上三種分類，誒，怎麼寫不出來了，剛剛不是講話很大聲的嗎XDDD
-
-% 我們認為研究將手背作為感測目標是極具吸引人的
-% attractive location
-
-% 當裝置感測目標位於手背時，這樣的裝置具有以下四個特色：
-
-% First,不干擾裝置：當手指、手腕、手臂在空間中與環境互動時，通常會干擾裝置感測，如：握持物體遮擋camera，或手腕關節活動干擾手腕裝置
-
-% Second,不受裝置干擾：手背屬於平坦並且日常中不常使用的地方，可以避免穿戴者在進行手部關節運動時受到裝置干擾，如：手指被手套包覆除了不靈活也degrade tactile sensation，或者將裝置穿戴於手腕，影響手腕關節活動（wristflex)。
-
-% Third,精準：提供接近於手指作為感測目標手勢辨識的精準度
-
-% Fourth,不受外部環境影響：一般以vision或聲音為基礎的gestual interface，容易受到外部光源或聲音的干擾
-
-%  \getTitleName\ is an elegant and powerful gestural interface that 將感測目標面對手背。
- 
-%  此系統的prototype藉由在人工皮載體上放置感應靈敏之應變感應器陣列，可以細微的觀測手背變形程度變化。
- 
-%  我們用這樣的裝置，來探索在手背這樣寬廣且平坦的地方，哪裡最適合放置感應裝置。
-
 \getTitleName\ is an elegant and powerful gestural interface that falls into a new category of input signal source as the back of hand. The prototype consisting of a artificial skin where an array of strain sensors are attached measures any physical changes on the back of hand.
 
 There are also several reasons to choose the back of hand as the source of sensor's input signal:
-
-% There are also several reasons to choose the back of hand as the source of sensor's input signal:(1) , (2), (3) measurement accuracy.
-
-%First, strain sensors placed on the back of hand are less prone to false detection and ____ caused by the user's daily-life behaviour.
-% First, joint movement of body parts such as fingers, wrist, and arm interacting with tangible objects usually interfere with its sensing operation.
 First, interactions with tangible objects often interfere with the sensing operation.
 For instance, a grasp of an object blocks the camera worn on the wrist capturing finger movements.
 Sensors attached to joints could also cause false positives by a joint movement.
@@ -189,19 +143,13 @@ For another instance, physical wrist movements can cause unintended results to t
 Sensing physical changes on the back of hand are not subject to such technical limitations.
 Second, the back of hand without joints is a surface with less curvature and has less chance of physical contact with other objects under most circumstances. Moreover, unlike fingers and palms, the back of hand is not a body part effectively for productivity and interactions with tangible objects. Hence, strain sensors on the back of hand do not reduce dexterity of the hands and contribute less discomfort and less degradation of tactile sensation compared to that of glove-like devices.
 Third, high measurement accuracy is obtained due to its nearby location to the fingers.
-% Fourth, external noises such as light and sound do not interfere such device.
- 
-% (e.g., high measurement performance, high reliability, versatile gesture types, portability).
-
-%Traditional glove-based systems cover most of the fingers to measure the flex of the fingers; gestural interfaces in wearable and portable computers are usually worn on the wrist or arm.
-% We explore the back of hand to be an attractive location for an alternative gestural interface that simply affixes on the users' back of the hand.
 
 In addition to this device that can detect subtle finger movements from the deformation distribution on the back of the hand, the contributions of this work also include an exploration of the influence of various gestures on it and then address the optimal sensor placement,
 associated hardware and software design spaces,
 an evaluation of the levels of recognition accuracy and performance,
 and a set of applications and broader interactions with the different usage scenarios that are enabled by \getTitleName.
 
-%請把上一段落變成列點式：
+
 % \begin{itemize}
 % \item We ... exploration of the influence of various gestures on it and then address the optimal sensor placement.
 % \item We ... associated hardware and software design spaces.
@@ -211,13 +159,7 @@ and a set of applications and broader interactions with the different usage scen
 \section{RELATED WORK}
 
 \subsection{Finger-based Gestural Interfaces}
-%To gather high accuracy information of hand movements, a common technique is to instrument the hand with a glove-based gestural interface which is equipped with a number of sensors which provide information about hand position, orientation, and bending angles of fingers. Although these data glove-like systems are different in sensor technologies, locations, and mounting, they all share three basic design concepts: they measure finger joint bending, use a cloth for supporting sensors, and are usually meant to be general-purpose devices \cite{4539650}. 
 
-%Although most of these data gloves provide high accuracy, high reliability, and high capability in measuring the degrees-of-freedom (DoF) of human hands, they suffered from several drawbacks. Major limitations originated from the cloth support, which acted as a constraint on the user’s hand. For instance, they have to be worn on the fingers to measure the flex of the fingers. Such complications may reduce dexterity of the hand. Additionally, these systems can be complex, expensive, and cumbersome for users.
-
-%The constraints of traditional glove-based systems make them poor candidates for use in mobile applications. 
-
-%These systems use inertial-based sensors for data acquisition \cite{4539650}. Worn by the user, they can distinguish the finger movement. However, the cloth support and mechanical structures attached directly to fingers can be cumbersome and unfriendly. The discomfort can not only decrease dexterity of the hands but also blunt tactile sensitivity.
 
 To gather high accuracy information of hand movements, a common technique is to measure the extension of the fingers. One approach is glove-based gestural interface \cite{4539650} which is equipped with a number of sensors that provide information about fingers and thumb abduction/adduction. Some of data glove-like systems use inertial-based sensors such as accelerometer and gyro sensors to determine hand position and orientation. Although most of these data gloves provide high accuracy, high reliability, and high capability in measuring the degrees-of-freedom (DoF) of human hands, they suffered from several drawbacks. Major limitations originated from the cloth support and the mechanical structure, which acted as a constraint on the user’s hand e.g., they have to be worn on the fingers to measure the flex of the fingers. Such complications may not only reduce dexterity of the hand but also blunt tactile sensitivity. Additionally, these systems can be complex, expensive, and cumbersome for users.
 
@@ -226,9 +168,8 @@ Visible occlusion resulting from crossing finger, heavy computation requirement 
 
 \subsection{Wrist-based Gestural Interfaces}
 
-%In the past couple of years, a number of gestural interfaces for alphanumerical character entry in wearable and portable computers have been proposed. Since these devices are usually worn on the wrist or arm, they introduce a unique opportunity to understand user’s arm, hand and possibly finger movements. While all these devices stand out for their originality and overcome some of the limitations of the data glove-like devices(e.g., most have no cloth), they have individual limitations. Additionally, they were designed for specific applications rather than for general purpose. Although they may be suitable for gesture-based applications outside the wearable and portable computer area due to their accessibility, they appear to be unsuitable for applications that require high measurement performance and the diversity of gesture types.
 
-In the past couple of years, a number of gestural interfaces entry in wearable and portable computers have been proposed. Since these devices are usually worn on the wrist, they introduce a unique opportunity to understand user's hand and possibly finger movements. For instance, WristFlex \cite{Dementyev:2014:WLG:2642918.2647396} is a low-power gesture input which uses an array of force sensitive resistors to distinguish . While all these devices stand out for their originality and overcome some of the limitations of the data glove-like devices(e.g., most have no cloth), they appear to be unsuitable for applications that require high measurement performance and the diversity of gesture types.
+From another approach, a number of gestural interfaces entry in wearable and portable computers have been proposed. Since these devices are usually worn on the wrist, they introduce a unique opportunity to understand user's hand and possibly finger movements. For instance, WristFlex \cite{Dementyev:2014:WLG:2642918.2647396} is a low-power gesture input which uses an array of force sensitive resistors to distinguish . While all these devices stand out for their originality and overcome some of the limitations of the data glove-like devices(e.g., most have no cloth), they appear to be unsuitable for applications that require high measurement performance and the diversity of gesture types.
 
 
 \subsection{Arm-based Gestural Interfaces}
