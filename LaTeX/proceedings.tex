@@ -304,7 +304,7 @@ Strain gauge sensors are sensitive devices used to measure very small strain and
 
 
 % 需要解釋為什麼要19個應變規
-In our prototype, the sensing stage of our prototype consists of a reusable artificial skin and an array of 19 120-ohm 2-mm strain gauge sensors. The artificial skin is attached to the back of hand and acts as a sensor carrier. The sensors are evenly distributed into 2 rows for greater resolution in data acquisition shown in figure X. The following sentences explain for such sensor layout. An average of human hand width is approximately 81 mm \cite{Kulaksiz2002257}, and the base length of a 2-mm strain gauge is 6.3 mm. In order to avoid physical contact between any two neighboring sensors in a row causing strain interference, a spaced interval of 1.5 mm separates them, resulting in 10 strain gauges in a row across the hand width. Without the loss of strain measurement between the two neighboring sensors, a second row with 9 sensors, each of which is vertically aligned with each center of the spaced intervals on the first row, is placed closely to the first row. The sensor array measures the deformations of multiple individual spots of the artificial skin caused by physical changes on the back of hand. Thus, our prototype is made possible to become a gestural interface for general users.
+In our prototype, the sensing stage of our prototype consists of a reusable artificial skin and an array of 19 120-ohm 2-mm strain gauge sensors. The artificial skin is attached to the back of hand and acts as a sensor carrier. The sensors are evenly distributed into 2 rows for greater resolution in data acquisition shown in figure X. The following sentences explain for such sensor layout. An average of human hand width is approximately 81 mm \cite{Kulaksiz2002257}, and the base length of a 2-mm strain gauge is 6.3 mm. In order to avoid physical contact between any two neighboring sensors in a row causing strain interference, a spaced interval of 1.5 mm separates them, resulting in 10 strain gauges in a row across the hand width. Without the loss of strain measurement between the two neighboring sensors, a second row with 9 sensors, each of which is vertically aligned with each center of the spaced intervals on the first row, is placed under the first row. The sensor array measures the deformations of multiple individual spots of the artificial skin caused by physical changes on the back of hand. Thus, our prototype is made possible to become a gestural interface for general users.
 
 Next, the signal conditioning stage includes a Wheatstone bridge, 3 8-to-1 analog switches (MAX4617, Maxim Integrated), a dual digital potentiometer (MCP4251, Microchip), and an instrumental amplifier (AD623, Analog Devices). Finally, the processing stage includes an Arduino Nano used to sample the sensors and control chips in the signal conditioning stage. The complete circuit diagram is shown in \autoref{fig:completeCircuitDiagram}.
 
@@ -317,9 +317,8 @@ Next, the signal conditioning stage includes a Wheatstone bridge, 3 8-to-1 analo
 \begin{figure}
  \begin{center}
   \includegraphics[width=1\columnwidth]{figures/tie.png}
-  \caption{
-    results
-  }~\label{fig:tie}
+  \caption{The layout shows a total of 19 sensors distributed into 2 rows. The first row includes 10 sensors for the reason that}
+  \label{fig:tie}
   \end{center}
 \end{figure}
 
@@ -438,6 +437,14 @@ The results show that
   \label{fig:accuracy16Gs}
   \end{center}
 \end{figure*}
+
+\begin{figure}
+  \begin{center}
+  \includegraphics[width=1\columnwidth]{figures/CM_v1.pdf}
+  \caption{CM}
+  \label{fig:CM}
+  \end{center}
+\end{figure}
 
 \section{DISCUSSION}
 
