@@ -269,7 +269,7 @@ One of the taxonomies of body-worn gestural interfaces is based on the source of
 
 %These systems use inertial-based sensors for data acquisition \cite{4539650}. Worn by the user, they can distinguish the finger movement. However, the cloth support and mechanical structures attached directly to fingers can be cumbersome and unfriendly. The discomfort can not only decrease dexterity of the hands but also blunt tactile sensitivity.
 
-To gather high accuracy information of hand movements, a common technique is to measure the overall flexion of the fingers. One approach is to instrument the hand with a data glove-like gestural interface \cite{4539650} which is equipped with a number of sensors that capture physical data about hand position, orientation, and bending angles of fingers. Some of data glove-like systems use inertial-based sensors such as accelerometer and gyro sensors to determine hand position and orientation.%要舉例
+To gather high accuracy information of hand movements, a common technique is to measure the overall flexion of the fingers. One approach is to instrument the hand with a data glove-like gestural interface \cite{4539650} which is equipped with a number of sensors that capture physical data about hand position, orientation, and bending angles of fingers. Some of data glove-like systems use inertial-based sensors such as accelerometer and gyro sensors to determine hand position and orientation. Several products are released recent years for abundant application with complex sensors. For instance, The CyberGlove is currently considered one of the most accurate glove systems for 3D modeling, robot control etc \cite{LaViola:1999:SHP:864649} \cite{Burdea:2003:VRT:829566}, and the 5DT Glove and p5 Glove are famous in virtual reality. 
 Although most of these glove-based systems provide high performance, high reliability, and high capability in measuring the degrees-of-freedom (DoF) of human hands, they suffered from several drawbacks.%要cite
 Major limitations originated from the cloth support and the mechanical structure%要cite
 , which acted as a constraint on the user’s hand. e.g., they have to be worn on the fingers to measure the flexion of the fingers. Such complications may not only reduce dexterity of the hand but blunt tactile sensitivity. Additionally, these systems can be complex, expensive, and cumbersome for users.
@@ -285,7 +285,7 @@ From another approach, a number of lightweight systems measuring physical proper
 
 \subsection{Arm-based Gestural Interfaces}
 
-Arm-based gestural interface is another approach to explore hands-free and implement-free input techniques. Some research projects based on muscle-computer interface \cite{Saponas:2009:EAI:1622176.1622208} use forearm electromyography to decode human muscular movement and then measure user fingers gesture. A commercial product named Myo also uses EMG for gesture detection. However, compared to the aforementioned interfaces, EMG systems require higher accuracy and they must have high power comsumption because of entensive signal processing.  
+Arm-based gestural interface is another approach to explore hands-free and implement-free input techniques. Some research projects based on muscle-computer interface \cite{Saponas:2009:EAI:1622176.1622208} use forearm electromyography to decode human muscular movement and then measure user fingers gesture. A commercial product named Myo \cite{Myo} also uses EMG for gesture detection. However, compared to the aforementioned interfaces, EMG systems require higher accuracy and they must have high power consumption because of intensive signal processing.  
 
 %補結論
 
@@ -304,7 +304,7 @@ Strain gauge sensors are sensitive devices used to measure very small strain and
 
 
 % 需要解釋為什麼要19個應變規
-In our prototype, the sensing stage of our prototype consists of a reusable artificial skin and an array of 19 120-ohm 2-mm strain gauge sensors. The artificial skin is attached to the back of hand and acts as a sensor carrier. The sensors are evenly distributed into 2 rows for greater resolution in data acquisition shown in figure X. The following sentences explain for such sensor layout. An average of human hand width is approximately 81 mm \cite{Kulaksiz2002257}, and the base length of a 2-mm strain gauge is 6.3 mm. In order to avoid physical contact between any two neighboring sensors in a row causing strain interference, a spaced interval of 1.5 mm separates them, resulting in 10 strain gauges in a row across the hand width. Without the loss of strain measurement between the two neighboring sensors, a second row with 9 sensors, each of which is vertically aligned with each center of the spaced intervals on the first row, is placed under the first row. The sensor array measures the deformations of multiple individual spots of the artificial skin caused by physical changes on the back of hand. Thus, our prototype is made possible to become a gestural interface for general users.
+In our prototype, the sensing stage of our prototype consists of a reusable artificial skin and an array of 19 120-ohm 2-mm strain gauge sensors. The artificial skin is attached to the back of hand and acts as a sensor carrier. The sensors are evenly distributed into 2 rows for greater resolution in data acquisition shown in figure X. The following sentences explain for such sensor layout. An average of human hand width is approximately 81 mm \cite{Kulaksiz2002257}, and the base length of a 2-mm strain gauge is 6.3 mm. In order to avoid physical contact between any two neighboring sensors in a row causing strain interference, a spaced interval of 2 mm separates them, resulting in 10 strain gauges in a row across the hand width. Without the loss of strain measurement between the two neighboring sensors, a second row with 9 sensors, each of which is vertically aligned with each center of the spaced intervals on the first row, is placed under the first row. The sensor array measures the deformations of multiple individual spots of the artificial skin caused by physical changes on the back of hand. Thus, our prototype is made possible to become a gestural interface for general users.
 
 Next, the signal conditioning stage includes a Wheatstone bridge, 3 8-to-1 analog switches (MAX4617, Maxim Integrated), a dual digital potentiometer (MCP4251, Microchip), and an instrumental amplifier (AD623, Analog Devices). Finally, the processing stage includes an Arduino Nano used to sample the sensors and control chips in the signal conditioning stage. The complete circuit diagram is shown in \autoref{fig:completeCircuitDiagram}.
 
@@ -317,7 +317,7 @@ Next, the signal conditioning stage includes a Wheatstone bridge, 3 8-to-1 analo
 \begin{figure}
  \begin{center}
   \includegraphics[width=1\columnwidth]{figures/tie.png}
-  \caption{The layout shows a total of 19 sensors distributed into 2 rows. The first row includes 10 sensors for the reason that}
+  \caption{The layout shows a total of 19 sensors with a base length of 6.3 mm distributed into 2 rows. The strain sensors should avoid physical contact with each other by leaving a spaced interval of 2 mm between the neighboring sensors. Therefore, a number of 10 sensors fits the hand of a normal person. The second row includes 9 sensors to increase resolution and to measure the physical properties along the vertical direction between each spaced interval of the first row.}
   \label{fig:tie}
   \end{center}
 \end{figure}
@@ -337,10 +337,11 @@ A support vector machine (SVM) is a novel supervised learning method that basica
 We used LIBSVM tool \cite{CC01a}, an open source library for SVM. 
 We scale each feature to the range of 0 to 1 and then train a multi-class SVM classifier with a Radial Basis Function (RBF) kernel.
 
-\section{EVALUATION: OPTIMAL SENSOR PLACEMENT}
+% \section{EVALUATION: OPTIMAL SENSOR PLACEMENT}
+\section{EVALUATION: OPTIMAL SENSING LOCATION}
 
-The purpose of this evaluation was to investigate the accuracy of several combinations of sensor placement ranging from back of the hand to wrist. 
-The optimal sensor placement maximizes the performance of identifying hand gestures. %minimum area
+The purpose of this evaluation is to investigate the accuracy of several row configurations ranging from back of the hand to wrist. 
+The optimal sensing location maximizes the performance of identifying hand gestures.
 In addition, we provide some scientific visualizations of physical changes on the back of hand caused by gestures that are collected from all participants. These can enable us to understand, illustrate, and provide insight from collecting data. %by collecting data
 
 \subsection{Study Design}
@@ -366,7 +367,7 @@ We properly excluded most letters in ASL because the primary purpose of this stu
 Eventually, we choose digits from 0 to 10, ``L'', ``S'', ``Y'', and ``ILY'' (a combination of ``I'', ``L'', and ``Y'' meaning ``I love you'') from ASL and a relaxed gesture. In addition to the standard meanings from ASL, the gestures chosen above also possess a variety of cultural meanings. For instance, the ``Y'' handshape also represents making a phone call. Other chosen handshapes can be interpreted in different ways.
 
 % 以下是備案
-% Eventually, we choose digits from 0 to 10 from ASL and a relaxed gesture. In addition to the ASL gestures, we chose ... for their cultural meanings. For instance, the ``Y'' handshape also represents making a phone call. Other chosen handshapes can be interpreted in different ways.
+% Eventually, we choose digits from 0 to 10 from ASL and a relaxed gesture. In addition to the ASL gestures, we chose the gesture `` for their cultural meanings in our country. For instance, the ``Y'' handshape also represents making a phone call. Other chosen handshapes can be interpreted in different ways.
 
 \subsubsection{Procedure}
 %see figure
@@ -394,54 +395,96 @@ Overall, the study took approximately 80 minutes per participants.
   \end{center}
 \end{figure*}
 
-\begin{figure*}
+% \begin{figure}
+%  \begin{center}
+%   \includegraphics[width=1\columnwidth]{figures/Num8GestureV1.pdf}
+% %   \caption{
+%     % (A) A gesture of ``8'' from ASL is performed.
+%     % (B) A heat map is illustrated to show the sensor values of each strain gauge resulting from the gesture of ``8'' performed by a user. 
+% %   }
+%   \label{fig:Num8Gesture}
+%   \end{center}
+% \end{figure}
+
+\begin{figure}
  \begin{center}
-  \includegraphics[width=2\columnwidth]{figures/SVisual_v2.pdf}
+  \includegraphics[width=1\columnwidth]{figures/SVisual_v4.pdf}
   \caption{
     (A) A gesture of ``8'' from ASL is performed.
-    (B) A heat map is illustrated to show the sensor values of each strain gauge resulting from the gesture of ``8'' performed by a user. 
-    (C) Each entry is an average heat map of 10 trials of gesture ``8'' performed by a single user. The color distributions of each heat map differ quite much from person to person.
-    (D) 10 heat maps display all 10 trials of gesture ``8'' carried out by a participant. The color distributions remain fairly consistent throughout the entire user study.
+    (B) An array of strain gauge sensors is affixed to the back of hand.
+    (C) A heat map is illustrated to show the sensor values of each strain gauge resulting from the gesture of ``8'' performed by a user. Our sensing location starts with ``row-0'' at the metacarpophalangeal joints and ends with ``row-7'' at the head of ulna.
+    (D) Each entry is an average heat map of 10 trials of gesture ``8'' performed by a single user. The color distributions of each heat map differ quite much from person to person.
+    (E) 10 heat maps display all 10 trials of gesture ``8'' carried out by a participant. The color distributions remain fairly consistent throughout the entire user study.
   }
-  \label{fig:SVisual}
+  \label{fig:heatmapUsersV1}
   \end{center}
-\end{figure*}
+\end{figure}
 
-% To delve into the optimal sensor placement, we tested all the combinations of the 8 rows obtained from each participant, generating 15 possible subsets including 8 1-row combinations (from 0 to 7) and 7 2-row combinations (e.g., row-01, 12, 23, 34, 45, 56, 67).
+% \begin{figure*}
+%  \begin{center}
+%   \includegraphics[width=2\columnwidth]{figures/SVisual_v3.pdf}
+%   \caption{
+%     (A) A gesture of ``8'' from ASL is performed.
+%     (B) A heat map is illustrated to show the sensor values of each strain gauge resulting from the gesture of ``8'' performed by a user. 
+%     (C) Each entry is an average heat map of 10 trials of gesture ``8'' performed by a single user. The color distributions of each heat map differ quite much from person to person.
+%     (D) 10 heat maps display all 10 trials of gesture ``8'' carried out by a participant. The color distributions remain fairly consistent throughout the entire user study.
+%   }
+%   \label{fig:SVisual}
+%   \end{center}
+% \end{figure*}
+
+% To delve into the optimal sensor placement, we tested all the configurations of the 8 rows obtained from each participant, generating 15 possible subsets including 8 1-row configurations (from 0 to 7) and 7 2-row configurations (e.g., row-01, 12, 23, 34, 45, 56, 67).
 %It represents the upper bound of accuracy.On the other hand, we computed accuracy using the external 7 times testing dataset, which reflects the real-time performance of the system. In this case, the accuracy was 91.17\% (SD: ±3.88\%).
-Our results consist mainly two parts. The first part is a scientific visualization of physical changes on the back of hand. The second part is the determination of optimal sensor placement through machine learning.
+Our results consist mainly three parts. The first part is a scientific visualization of physical changes on the back of hand. The second part is the determination of optimal sensing location through machine learning. The last part is a confusion matrix analyzing the misclassification of each gesture.
 
+
+\subsubsection{Heat Map Visualization}
 %Each color in a block of a heat map represents a strain gauge sensor value. The heat map color spectrum ranges from red to blue standing for the two extreme states of tension and compression.
-The scientific visualization is shown in heat maps which displays a block with highest tension sensor value as red and highest compression value as blue. The color green represents the neutral state (without tension and compression) of a strain gauge. Other blocks with colors in-between the extremes of red and blue on the color spectrum feature sensor values between the highest tension value and highest compression value. \autoref{fig:user16GesturesSV}\ showing all 16 gestures performed by a participant implies that every pattern of the back of the hand has a gesture model inside it. \autoref{fig:SVisual}\ indicates heat maps of a gesture of ``8'' performed by 10 participants. 
+The scientific visualization is shown in heat maps which displays a block with highest tension sensor value as red and highest compression value as blue. The color green represents the neutral state (without tension and compression) of a strain gauge. Other blocks with colors in-between the extremes of red and blue on the color spectrum feature sensor values between the highest tension value and highest compression value. \autoref{fig:user16GesturesSV}\ showing all 16 gestures performed by a participant implies that every pattern of the back of the hand has a gesture model inside it. \autoref{fig:heatmapUsersV1}\ indicates heat maps of a gesture of ``8'' performed by 10 participants. 
 
 % every pattern of the back of the hand has a gesture model inside it and it is the task of the evaluation to discover it.
 
-To delve into the optimal sensor placement, we tested all 15 possible subsets for determining minimum strain sensor coverage area on the back of hand including 8 single-row combinations (from row-0 to row-7) and all 7 two-adjacent row combinations (e.g., row-01, row-12, row-23, row-34, row-45, row-56, row-67) from each participant.
+\subsubsection{Accuracy Rates}
+To delve into the optimal sensing location, we tested all 15 possible row configurations for determining minimum strain sensor coverage area on the back of hand including 8 single-row configurations (from row-0 to row-7) and all 7 two-adjacent row configurations (e.g., row-01, row-12, row-23, row-34, row-45, row-56, row-67) of sensing locations from each participant.
 % Each generated subset was evaluated based on a 10-fold cross validation where each fold contains data from a single trial is the test data validated by a training model constructed by other 9 folds.% containing data from the rest of the trials.
-Each generated subset was evaluated based on a 10-fold cross validation where each fold contains data from a single trial of a single user. We average the accuracy rates of each of the 10 folds in cross validations.
-The best results were obtained with a selection of highest mean accuracy rate across all participants.
-In 10-fold cross validation shown in \autoref{fig:accuracy16Gs}, the mean accuracy rate of the best result from the 15 subsets across all participants was 95.8\% (SD: ±3.14\%).
+Each row configuration was evaluated based on a 10-fold cross validation where each fold contains data from a single trial of a single participant.
+% We average the accuracy rates of each of the 10 folds in cross validations.
+First, we average the accuracy rates of each of the 10 folds in a cross validation for a row configuration of a single participant.
+Second, we take the average of the accuracy rates of a row configuration across 10 participants, and the overall accuracy rate of a row configuration is obtained.
+Such computational process is repeated to retrieve the overall accuracy rates of the 15 row configurations.
+The best results are obtained with a selection of highest mean accuracy rate across all participants.
+In 10-fold cross validation shown in \autoref{fig:accuracy16Gs}, the mean accuracy rate of the best result from the 15 subsets across all participants is 95.8\% (SD: ±3.14\%).
 
 The results show that
-(1) the row-12 has the highest accuracy rate, indicating the optimal sensor placement is not located closest to the finger joints but second to it. 
-(2) The accuracy rate of each single-row combinations is lower than that of its adjacent 2-row combinations. For example, accuracy rate of row-1 is lower than that of row-01 and row-12. The greater sensing resolution, the greater the accuracy rate is obtained. 
+(1) the row-12 has the highest accuracy rate, indicating the optimal sensing location is not on the closest row to the finger joints but second to it. 
+(2) The accuracy rate of each single-row configuration is lower than that of its adjacent 2-row configuration. For example, the accuracy rate of row-1 is lower than that of row-01 and row-12. Hence, the greater sensing resolution, the greater the accuracy rate is obtained. 
 (3) The accuracy rates decrease along the rows as approaching to the wrist where physical signals become unrecognizable among hand gestures.
 
 \begin{figure*}
  \begin{center}
   \includegraphics[width=2\columnwidth]{figures/10FCV_16.pdf}
   \caption{
-    The result of the average of 10-fold cross validations of all 10 participants. The value of each bar is an average accuracy rate of each of the 10 folds undergoing a 10-fold cross validation at a location on the back of hand. The average accuracy rates of all 15 subsets including 8 single-row combinations and 7 two-adjacent row combinations are used for the determination of the optimal sensing location on the back of hand.
+    The result of the average of 10-fold cross validations of all 10 participants. The value of each bar is an average accuracy rate of each of the 10 folds undergoing a 10-fold cross validation at a location on the back of hand. The average accuracy rates of all 15 subsets including 8 single-row configuration and 7 two-adjacent row configuration of sensing locations are used for the determination of the optimal sensing location on the back of hand.
     % The value of each bar is an average accuracy rate of each fold validated by the training model constructed by other 9 folds at a location on the back of hand.
   }
   \label{fig:accuracy16Gs}
   \end{center}
 \end{figure*}
 
+\subsubsection{Confusion Matrix}
+
+A confusion matrix shown in \autoref{fig:CM}\ describes the misclassification rates of the gestures using the row configuration of row12.
+The occurrence of false detection is usually resulted from the similarities of handshape.
+For instance, the ``S'' gesture has the lowest true positive rate (89.6\%) among 16 gestures and has a chance of 4.4\% to be classified as the ``10'' gesture because the two gestures only differ by the thumb posture.
+Another reason for misclassification is associated with weak physical signals.
+For example, the ``L'' gesture has a true positive rate (90.2\%) and a false negative rate of 5.1\% for being classified as the ``ILY'' gesture likely because the  physical changes caused by movements of the pinky finger are less obvious compared to that of other fingers. Therefore, an increase in the gain of an amplifier leads to being more effective in extracting weak signals.
+% Overall, most of 16 gestures have a true positive rate greater than 90\% from which it is reasonable to infer that the back of hand is an excellent signal source for a gestural interface.
+Overall, the true positive recognition rates are greater than 90\% for 15 gestures and 95\% for 12 gestures out of 16 gestures. From such result, it is reasonable to infer that the back of hand is an excellent signal source for a gestural interface.
+
 \begin{figure}
   \begin{center}
-  \includegraphics[width=1\columnwidth]{figures/CM_v1.pdf}
-  \caption{CM}
+  \includegraphics[width=1\columnwidth]{figures/CM_v2.pdf}
+  \caption{Confusion matrix for accuracies using training data from the row configuration of row12.}
   \label{fig:CM}
   \end{center}
 \end{figure}
@@ -451,9 +494,9 @@ The results show that
 \subsection{Leave-one-user-out Cross Validation}
 To understand how physical changes on the back of hand vary from person to person, the results of a leave-one-user-out cross validation are shown in \autoref{fig:LOO} where the value of each bar is an average of test results of each participant validated by the other 9 participant's training model at a location on the back of the hand. The highest accuracy rate of 27.4\% occurs at the location of row-23. Hence, the low accuracy rates imply that physical patterns on the back of hand are likely to be in low similarity among individuals.
 
-\begin{figure*}
+\begin{figure}
  \begin{center}
-  \includegraphics[width=2\columnwidth]{figures/LOO.pdf}
+  \includegraphics[width=1\columnwidth]{figures/LOO_V2.pdf}
   \caption{
     The result of the average of leave-one-user-out cross validations of all 10 participants.
     % The value of each bar is an average of test results of each participant at a location on the back of hand.
@@ -461,12 +504,12 @@ To understand how physical changes on the back of hand vary from person to perso
   }
   \label{fig:LOO}
   \end{center}
-\end{figure*}
+\end{figure}
 
 \subsection{Signal Source Comparison}
 To verify our assumption that the closer the signal source is to the fingers, the greater the accuracy rate of finer gesture recognition is obtained, a comparison is made with a related work, WristFlex \cite{Dementyev:2014:WLG:2642918.2647396}, as in which we use the exact same setup except for the on-screen feedback.
 % To verify our results that the closer the signal source is to the wrist, a significant decrease in accuracy rate of gesture recognition is obtained, a comparison is made with a related work, WristFlex, as in which we use the exact same setup except for an on-screen feedback.
-We choose the 4 pinching gestures and a relaxed gesture \cite{Dementyev:2014:WLG:2642918.2647396} which are also included in our gesture set. We pick the training data from the optimal sensing location. The methods to compute the accuracy rates are exactly the same as \cite{Dementyev:2014:WLG:2642918.2647396}. The accuracy rate obtained from the back of hand is statistically greater than that from the wrist in a 10-fold cross validation (98.2\% vs 96.3\%) and in a real-time cross validation with 3 training trials and 6 testing trials without feedback (90.6\% vs 69.3\%). The results indicate that sensing from the back of hand leads to a high accuracy rate due to its close proximity to the fingers.
+We choose the 4 pinching gestures and a relaxed gesture \cite{Dementyev:2014:WLG:2642918.2647396} which are also included in our gesture set. We pick the training data from the optimal sensing location. The methods to compute the accuracy rates are exactly the same as \cite{Dementyev:2014:WLG:2642918.2647396}. The accuracy rate obtained from the back of hand is statistically greater than that from the wrist in a 10-fold cross validation (98.2\% vs 96.3\%) and in a real-time cross validation with 3 training trials and 6 testing trials without feedback (90.6\% vs 69.3\%). The results indicate that sensing from the back of hand leads to a higher accuracy rate due to its close proximity to the fingers.
 
 \section{EXAMPLE APPLICATIONS}
 
@@ -521,12 +564,7 @@ We choose the 4 pinching gestures and a relaxed gesture \cite{Dementyev:2014:WLG
 
 
 \section{Acknowledgments}
-
-Sample text: We thank all the volunteers, and all publications support
-and staff, who wrote and provided helpful comments on previous
-versions of this document. Authors 1, 2, and 3 gratefully acknowledge
-the grant from NSF (\#1234--2012--ABC). \textit{This whole paragraph is
-  just an example.}
+We thank our advisor Prof. Mike Y. Chen and the faculty and staff of National Taiwan University. We also express our gratitude towards all those who have helped us in our work.
 
 % Balancing columns in a ref list is a bit of a pain because you
 % either use a hack like flushend or balance, or manually insert
