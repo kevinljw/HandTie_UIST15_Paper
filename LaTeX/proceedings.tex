@@ -76,21 +76,21 @@
 
 \title{\getTitleName\ : Sensing Hand Gestures via the Back of the Hand}
 
-% \numberofauthors{3}
-% \author{%
-%   \alignauthor{1st Author Name\\
-%     \affaddr{Affiliation}\\
-%     \affaddr{City, Country}\\
-%     \email{e-mail address}}\\
-%   \alignauthor{2nd Author Name\\
-%     \affaddr{Affiliation}\\
-%     \affaddr{City, Country}\\
-%     \email{e-mail address}}\\
-%   \alignauthor{3rd Author Name\\
-%     \affaddr{Affiliation}\\
-%     \affaddr{City, Country}\\
-%     \email{e-mail address}}\\
-% }
+\numberofauthors{3}
+\author{%
+  \alignauthor{1st Author Name\\
+    \affaddr{Affiliation}\\
+    \affaddr{City, Country}\\
+    \email{e-mail address}}\\
+  \alignauthor{2nd Author Name\\
+    \affaddr{Affiliation}\\
+    \affaddr{City, Country}\\
+    \email{e-mail address}}\\
+  \alignauthor{3rd Author Name\\
+    \affaddr{Affiliation}\\
+    \affaddr{City, Country}\\
+    \email{e-mail address}}\\
+}
 
 \maketitle
 
@@ -212,7 +212,7 @@ Among the previous works, \autoref{fig:HandTarget} shows the three common body p
  
 %  我們用這樣的裝置，來探索在手背這樣寬廣且平坦的地方，哪裡最適合放置感應裝置。
 
-\getTitleName\ is an elegant and powerful gestural interface that falls into a new category of input signal source as the back of hand. The prototype consisting of a artificial skin where an array of strain sensors is attached measures physical changes on the back of hand.
+\getTitleName\ is an elegant and powerful gestural interface that falls into a new category of input signal source as the back of hand. The prototype consisting of an artificial skin where an array of strain sensors is attached measures physical changes on the back of hand.
 
 % There are also several reasons to choose the back of hand as the source of sensor's input signal:
 
@@ -220,7 +220,7 @@ There are also three reasons to choose the back of hand as the source of sensor'
 
 First, user interference is a noise caused by a wearer. Interactions with tangible objects often interfere with the sensing operation.
 For instance, a grasp of an object blocks the camera worn on the wrist capturing finger movements.
-Sensors attached to joints could also cause false positives by a joint movement.
+Sensors attached to joints could also cause false detection by a joint movement.
 For another instance, physical wrist movements can cause unintended results to the wrist-based signal source device. Sensing physical changes on the back of hand are less subject to such technical limitations. 
 
 Second, device interference is a factor positively related to user's discomfort. The back of hand without joints is a surface with less curvature and has less chance of physical contact with other objects under most circumstances. Moreover, unlike fingers and palms, the back of hand is not a body part effectively for productivity and interactions with tangible objects. Hence, sensing on the back of hand do not reduce dexterity of the hands and contribute less discomfort and less degradation of tactile sensation compared to that of glove-like devices.
@@ -269,9 +269,9 @@ One of the taxonomies of body-worn gestural interfaces is based on the source of
 
 %These systems use inertial-based sensors for data acquisition \cite{4539650}. Worn by the user, they can distinguish the finger movement. However, the cloth support and mechanical structures attached directly to fingers can be cumbersome and unfriendly. The discomfort can not only decrease dexterity of the hands but also blunt tactile sensitivity.
 
-To gather high accuracy information of hand movements, a common technique is to measure the overall flexion of the fingers. One approach is to instrument the hand with a data glove-like gestural interface \cite{4539650} which is equipped with a number of sensors that capture physical data about hand position, orientation, and bending angles of fingers. Some of data glove-like systems use inertial-based sensors such as accelerometer and gyro sensors to determine hand position and orientation. Several products are released recent years for abundant application with complex sensors. For instance, The CyberGlove is currently considered one of the most accurate glove systems for 3D modeling, robot control etc \cite{LaViola:1999:SHP:864649} \cite{Burdea:2003:VRT:829566}, and the 5DT Glove and p5 Glove are famous in virtual reality. 
-Although most of these glove-based systems provide high performance, high reliability, and high capability in measuring the degrees-of-freedom (DoF) of human hands, they suffered from several drawbacks.%要cite
-Major limitations originated from the cloth support and the mechanical structure%要cite
+To gather high accuracy information of hand movements, a common technique is to measure the overall flexion of the fingers. One approach is to instrument the hand with a data glove-like gestural interface \cite{4539650} which is equipped with a number of sensors that capture physical data about hand position, orientation, and bending angles of fingers. Some of data glove-like systems use inertial-based sensors such as accelerometer and gyro sensors to determine hand position and orientation. Several products are released recent years for abundant application with complex sensors. For instance, the CyberGlove is currently considered one of the most accurate glove systems for 3D modeling, robot control etc \cite{LaViola:1999:SHP:864649} \cite{Burdea:2003:VRT:829566}, and the 5DT Glove \cite{5DT} is famous in virtual reality. 
+Although most of these glove-based systems provide high performance, high reliability, and high capability in measuring the degrees-of-freedom (DoF) of human hands, they suffered from several drawbacks. %要cite
+Major limitations originated from the cloth support and the mechanical structure \cite{4539650}
 , which acted as a constraint on the user’s hand. e.g., they have to be worn on the fingers to measure the flexion of the fingers. Such complications may not only reduce dexterity of the hand but blunt tactile sensitivity. Additionally, these systems can be complex, expensive, and cumbersome for users.
 
 To overcome the discomfort of data glove, another approach uses wearable cameras to recognize fingers gesture. Camera-based systems can be worn on some parts of the body e.g. Digits \cite{Kim:2012:DFI:2380116.2380139} which is based on 3D infrared camera is and another system \cite{6855631} which uses time-of-flight (TOF) camera are wrist-worn sensors. By recovering 3D articulated hand poses, they provide high fidelity sensing without wearing the glove. However, because of the fundamental limitation of cameras, the visible occlusion resulting from crossing finger, heavy computation requirement of 3D reconstruction technology, large power consumption and expensive cost are problematic for these vision-based systems.
@@ -304,7 +304,7 @@ Strain gauge sensors are sensitive devices used to measure very small strain and
 
 
 % 需要解釋為什麼要19個應變規
-In our prototype, the sensing stage of our prototype consists of a reusable artificial skin and an array of 19 120-ohm 2-mm strain gauge sensors. The artificial skin is attached to the back of hand and acts as a sensor carrier. The sensors are evenly distributed into 2 rows for greater resolution in data acquisition shown in figure X. The following sentences explain for such sensor layout. An average of human hand width is approximately 81 mm \cite{Kulaksiz2002257}, and the base length of a 2-mm strain gauge is 6.3 mm. In order to avoid physical contact between any two neighboring sensors in a row causing strain interference, a spaced interval of 2 mm separates them, resulting in 10 strain gauges in a row across the hand width. Without the loss of strain measurement between the two neighboring sensors, a second row with 9 sensors, each of which is vertically aligned with each center of the spaced intervals on the first row, is placed under the first row. The sensor array measures the deformations of multiple individual spots of the artificial skin caused by physical changes on the back of hand. Thus, our prototype is made possible to become a gestural interface for general users.
+In our prototype, the sensing stage of our prototype consists of a reusable artificial skin and an array of 19 120-ohm 2-mm strain gauge sensors. The artificial skin is attached to the back of hand and acts as a sensor carrier. As shown in \autoref{fig:tie}, the sensors are evenly distributed into 2 rows for greater resolution in data acquisition. The following sentences explain for such sensor layout. An average of human hand width is approximately 81 mm \cite{Kulaksiz2002257}, and the base length of a 2-mm strain gauge is 6.3 mm. In order to avoid physical contact between any two neighboring sensors in a row causing strain interference, a spaced interval of 2 mm separates them, resulting in 10 strain gauges in a row across the hand width. Without the loss of strain measurement between the two neighboring sensors, a second row with 9 sensors, each of which is vertically aligned with each center of the spaced intervals on the first row, is placed under the first row. The sensor array measures the deformations of multiple individual spots of the artificial skin caused by physical changes on the back of hand. Thus, our prototype is made possible to become a gestural interface for general users.
 
 Next, the signal conditioning stage includes a Wheatstone bridge, 3 8-to-1 analog switches (MAX4617, Maxim Integrated), a dual digital potentiometer (MCP4251, Microchip), and an instrumental amplifier (AD623, Analog Devices). Finally, the processing stage includes an Arduino Nano used to sample the sensors and control chips in the signal conditioning stage. The complete circuit diagram is shown in \autoref{fig:completeCircuitDiagram}.
 
@@ -317,7 +317,7 @@ Next, the signal conditioning stage includes a Wheatstone bridge, 3 8-to-1 analo
 \begin{figure}
  \begin{center}
   \includegraphics[width=1\columnwidth]{figures/tie.png}
-  \caption{The layout shows a total of 19 sensors with a base length of 6.3 mm distributed into 2 rows. The strain sensors should avoid physical contact with each other by leaving a spaced interval of 2 mm between the neighboring sensors. Therefore, a number of 10 sensors fits the hand of a normal person. The second row includes 9 sensors to increase resolution and to measure the physical properties along the vertical direction between each spaced interval of the first row.}
+  \caption{The layout shows a total of 19 sensors with a base length of 6.3 mm distributed into 2 rows on an artificial skin. The strain sensors should avoid physical contact with each other by leaving a spaced interval of 2 mm between the neighboring sensors in a row. Therefore, a number of 10 sensors fits the hand width of a normal person. The second row includes 9 sensors to increase resolution and to measure the physical properties along the vertical direction between each spaced interval of the first row.}
   \label{fig:tie}
   \end{center}
 \end{figure}
@@ -342,7 +342,7 @@ We scale each feature to the range of 0 to 1 and then train a multi-class SVM cl
 
 The purpose of this evaluation is to investigate the accuracy of several row configurations ranging from back of the hand to wrist. 
 The optimal sensing location maximizes the performance of identifying hand gestures.
-In addition, we provide some scientific visualizations of physical changes on the back of hand caused by gestures that are collected from all participants. These can enable us to understand, illustrate, and provide insight from collecting data. %by collecting data
+In addition, we provide some scientific visualizations of physical changes on the back of hand caused by gestures that are collected from all participants. These can enable us to understand, illustrate, and provide insights into the physical properties of the back of hand. %by collecting data
 
 \subsection{Study Design}
 We recruited 10 participants (4 females, 9 right-handed) aged between 20 and 32 (mean: 23.2) to test 16 gestures, shown in \autoref{fig:gestureSet16}
@@ -367,7 +367,7 @@ We properly excluded most letters in ASL because the primary purpose of this stu
 Eventually, we choose digits from 0 to 10, ``L'', ``S'', ``Y'', and ``ILY'' (a combination of ``I'', ``L'', and ``Y'' meaning ``I love you'') from ASL and a relaxed gesture. In addition to the standard meanings from ASL, the gestures chosen above also possess a variety of cultural meanings. For instance, the ``Y'' handshape also represents making a phone call. Other chosen handshapes can be interpreted in different ways.
 
 % 以下是備案
-% Eventually, we choose digits from 0 to 10 from ASL and a relaxed gesture. In addition to the ASL gestures, we chose the gesture `` for their cultural meanings in our country. For instance, the ``Y'' handshape also represents making a phone call. Other chosen handshapes can be interpreted in different ways.
+% Eventually, we choose digits from 0 to 10 from ASL and a relaxed gesture. In addition to the ASL gestures, we choose 4 gestures possessing significant cultural meanings in our country such as digit ``six'', ``seven'', and ``zero'', and ``I-love-you'', each of which also coincides with ``Y'', ``L'', ``S'', and ``ILY'', respectively, in ASL. Therefore, the gestures in \autoref{fig:user16GesturesSV}\ are denoted using ASL letters.
 
 \subsubsection{Procedure}
 %see figure
@@ -473,7 +473,7 @@ The results show that
 
 \subsubsection{Confusion Matrix}
 
-A confusion matrix shown in \autoref{fig:CM}\ describes the misclassification rates of the gestures using the row configuration of row12.
+A confusion matrix shown in \autoref{fig:CM}\ describes the misclassification rates of the gestures using the row configuration of row-12.
 The occurrence of false detection is usually resulted from the similarities of handshape.
 For instance, the ``S'' gesture has the lowest true positive rate (89.6\%) among 16 gestures and has a chance of 4.4\% to be classified as the ``10'' gesture because the two gestures only differ by the thumb posture.
 Another reason for misclassification is associated with weak physical signals.
@@ -511,13 +511,22 @@ To verify our assumption that the closer the signal source is to the fingers, th
 % To verify our results that the closer the signal source is to the wrist, a significant decrease in accuracy rate of gesture recognition is obtained, a comparison is made with a related work, WristFlex, as in which we use the exact same setup except for an on-screen feedback.
 We choose the 4 pinching gestures and a relaxed gesture \cite{Dementyev:2014:WLG:2642918.2647396} which are also included in our gesture set. We pick the training data from the optimal sensing location. The methods to compute the accuracy rates are exactly the same as \cite{Dementyev:2014:WLG:2642918.2647396}. The accuracy rate obtained from the back of hand is statistically greater than that from the wrist in a 10-fold cross validation (98.2\% vs 96.3\%) and in a real-time cross validation with 3 training trials and 6 testing trials without feedback (90.6\% vs 69.3\%). The results indicate that sensing from the back of hand leads to a higher accuracy rate due to its close proximity to the fingers.
 
+\subsection{Limitations}
+Aforementioned in the section of leave-one-user-out cross validation, a small likelihood of a generalized model to fit all users is one of the limitations of utilizing such signal source.
+
+Our prototype employs strain sensors which are meant to measure very small strain and elongation of a rigid structure. The sensors can be damaged by applying an excessive stress while removing the artificial skin off the user. High elongation strain gauges can be adopted to resolve this problem.
+
+The signals from the sensors must undergo stages of signal processing and conditioning leading to a number of chips required in the hardware taking up space in our prototype. Thus, the current size of our hardware is not suitable for an on-body gestural interface. Moreover, the system requires a USB serial cable for power supply and data transmission. It will be future work to redesign a small sized, battery powered, and wireless hardware.
+
 \section{EXAMPLE APPLICATIONS}
+
+\subsection{Baseball Pitching Grips: some specific set of gestures \& force detection}
 
 \subsection{Smartwatch Control:Thumb \& index finger interaction}
     
 \subsection{Musical Performance:Thumb \& four fingers}
     
-\subsection{Baseball Pitching Grips: some specific set of gestures \& force detection}
+
     
 % Use a numbered list of references at the end of the article, ordered
 % alphabetically by first author, and referenced by numbers in
