@@ -72,9 +72,9 @@
 % End of preamble. Here it comes the document.
 \begin{document}
 
-\newcommand{\getTitleName}{HandTie}
+\newcommand{\getTitleName}{BackHand}
 
-\title{\getTitleName\ : Sensing Hand Gestures via the Back of the Hand}
+\title{\getTitleName: Sensing Hand Gestures via the Back of Hands}
 
 \numberofauthors{3}
 \author{%
@@ -105,43 +105,39 @@
 % We perform user studies to explore the influence of various gesture on the back of the hand and evaluate the accuracy, speed, and repeatability. 
 % We conclude by showing example applications.
 
-In this paper, we propose a potential input signal source, the back of hand, for gestural interface.
-We develop a prototype, \getTitleName, using an array of strain gauge (SG) sensors affixed to the back of hand to demonstrate one of the sensing techniques to extract signals from such body part.
+In this paper, we explore using the back of hands for sensing hand gestures, which interferes less than glove-based approaches and provides better recognition than sensing at wrists and forearms. 
+Our prototype, \getTitleName, uses an array of strain gauge sensors affixed to the back of hands, and applies machine learning techniques to recognize a variety of hand gestures.
 % The signals extracted from the back of hand are training data and test data for gestural classification. Based on the results of the average accuracy rate of 10-fold cross validations of all 10 participants, we are able to determine the optimal sensing location on the back of hand and the feasibility of utilizing such signal source.
 % The signals extracted from the back of hand are data for gestural classification.
 % The optimal sensing location on the back of hand is determined based on the results of the highest mean accuracy rate (?\%) of 10-fold cross validations of all 10 participants performing 16 gestures in our user study.
-We also conduct a user study with 10 participants to provide an optimal sensing location on the back of hand at a 95.8\% accuracy rate for 16 common gestures.
-The result of leave-one-user-out cross validation shows that each individual has his unique physical pattern on the back hand when performing a gesture.
-A comparison between our prototype and a device using wrist-based signal source verifies that the accuracy rate of gesture recognition is higher by extracting signals from the back of the hand than that from the wrist (?\% vs ?\%).
-We conclude by showing example applications.
-
+We conducted a user study with 10 participants to better understand gesture recognition accuracy and the effects of sensing locations. Results showed that sensor reading patterns differ significantly across users, but are consistent for the same user. The leave-one-user-out accuracy is low at an average of 27.4\%, but reaches 95.8\% average accuracy for 16 popular hand gestures when personalized for each participant. The optimal sensing location spans the 1/8\texttildelow{}1/4 area between the metacarpophalangeal joints (MCP, the knuckles between the hand and fingers) and the head of ulna (tip of the wrist).
+% at a 95.8\% accuracy for 16 popular hand gestures.
+%The result of leave-one-user-out cross validation shows that each individual has his unique physical pattern on the back hand when performing a gesture.
+%A comparison between our prototype and a device using wrist-based signal source verifies that the accuracy rate of gesture recognition is higher by extracting signals from the back of the hand than that from the wrist (?\% vs ?\%).
 \end{abstract}
 
 \keywords{Gesture recognition; wearable interface; strain gauge; machine learning; gestural interaction }
 
-\category{H.5.m.}{Information Interfaces and Presentation
-  (e.g. HCI)}{Miscellaneous} \category{See
-  \url{http://acm.org/about/class/1998/} for the full list of ACM
-  classifiers. This section is required.}{}{}
+% TODO for camera ready
+%\category{H.5.m.}{Information Interfaces and Presentation
+%  (e.g. HCI)}{Miscellaneous} \category{See
+%  \url{http://acm.org/about/class/1998/} for the full list of ACM
+%  classifiers. This section is required.}{}{}
 
 %直接用target sensing的位置去分類，分三類，手指、手腕、手臂
 %可以說手指偵測就得直接裝在手指上，不然就是CV的太耗電問題。可是戴在手腕上和戴在手臂上會不準，小動作偵測不到。
 
 
 \section{Introduction}
-Hand gestures have become popular and powerful means of human computer interface nowadays.
-Gesture interaction can serve as an effective and natural input modality to communication from humans to computers.
+Hand gesture is a fundamental part of human communication and a natural human-computer interface.
+%Gesture interaction can serve as an effective and natural input modality to communication from humans to computers.
 % However, the key problem in these gestural input devices is how to make hand gestures understood by the computer.
-Nonetheless, the key problem in these gestural input devices is how to make hand gestures recognizable by the computer.
-
-
+%Nonetheless, the key problem in these gestural input devices is how to make hand gestures recognizable by the computer.
 % Gesture interaction offers more effective expression and complements verbal communication in a conversation.
 %Gesture interaction can serve as a complementary modality to communication to express ones ideas.
-
 % According to the sensor's target position on the hand, there are many on-body gestural interfaces which can mainly be classified into two categories:(1) interfaces based on the finger's measurement , (2) interfaces based on wrist or arm measurement.
 %see figureX
-
-Based on the source of the sensor's input signal, numerous body-worn gestural interfaces can mainly be classified into three categories: (1) interfaces measuring physical movement directly from fingers, (2) interfaces measuring physical properties from wrist, (3) interfaces measuring physical properties from arm. See \autoref{fig:HandTarget}.
+Many projects have explored wearable sensors to detect hand gestures, and can be classified into the following three approaches as shown in \autoref{fig:HandTarget}: (1) sensing finger movement, (2) sensing physical properties of the wrist, (3) sensing physical properties of the forearm.
 
 % Finger-based gestural interfaces are devices mostly in a data glove-like form where sensors are placed directly on the joints of fingers \cite{4539650}. Gestures performed by users are accurately captured through such devices. Nonetheless, data gloves or mechanical structures worn on the hand cause discomfort and obstruct agility of fingers.
 % Another approach utilizing vision-based techniques resolve the disadvantages of glove-like devices. Despite the fact that a vision-based device is worn on the wrist \cite{Kim:2012:DFI:2380116.2380139}, it is still classified as a finger-based gestural interface because its input signal source also originates directly from finger movements. A vision-based approach also results in high accuracy rate of gesture recognition or hand tracking. Cameras suffer from line-of-sight occlusions and have large power consumption and heavy computation requirements limiting the battery life of such devices.
@@ -149,8 +145,7 @@ Based on the source of the sensor's input signal, numerous body-worn gestural in
 % Finger-based gestural interfaces are devices mostly in a data glove-like form where sensors are placed directly on the joints of fingers \cite{4539650}. Gestures performed by users are accurately captured through such devices.
 % Another approach utilizes vision-based techniques. Despite the fact that a vision-based device is worn on the wrist \cite{Kim:2012:DFI:2380116.2380139}, it is still classified as a finger-based gestural interface because its input signal source also originates directly from finger movements. A vision-based approach also results in high accuracy rate of gesture recognition or hand tracking.
 
-Devices with finger-based signal source are mostly in a data glove-like form where sensors are placed directly on the joints of fingers \cite{4539650}. Gestures performed by users are accurately captured through such devices.
-Another approach utilizes vision-based techniques. Despite the fact that a vision-based device is worn on the wrist \cite{Kim:2012:DFI:2380116.2380139}, it is still classified as a finger-based gestural interface because its input signal source also originates directly from finger movements. A vision-based approach also results in high accuracy rate of gesture recognition or hand tracking.
+Data glove \cite{4539650} places sensors directly on finger joints. It accurately captures finger movement, but the glove form factor reduces tactile feedback and interferes with finger movement. Digits \cite{Kim:2012:DFI:2380116.2380139} uses wrist-worn cameras and a vision-based approach to track fingers at high accuracy, but is constrained by occlusion and requires significant camera elevation from the wrist. 
 
 \begin{figure}
   \begin{center}
@@ -166,16 +161,15 @@ Another approach utilizes vision-based techniques. Despite the fact that a visio
 % Wrist-based gestural interfaces detect physical properties directly from the wrist.
 % However, based on previous works adopting capacitive sensing technique \cite{Rekimoto:2001:GGU:580581.856565}, vision-based technique \cite{Dementyev:2014:WLG:2642918.2647396}, and force-sensitive sensing approach \cite{Fukui:2011:HSC:2030112.2030154}, changes in physical properties of the tendons on the wrist barely deliver distinguishable signals among finger gestures bringing about a very small number of gestures supported and low accuracy rate of recognition.
 
-Wrist-based signal source are derived from the physical properties directly from the wrist.
-However, based on previous works adopting capacitive sensing technique \cite{Rekimoto:2001:GGU:580581.856565}, vision-based technique \cite{Dementyev:2014:WLG:2642918.2647396}, and force-sensitive sensing approach \cite{Fukui:2011:HSC:2030112.2030154}, changes in physical properties of the tendons on the wrist barely deliver distinguishable signals among finger gestures bringing about a very small number of gestures supported and low accuracy rate of recognition.
+Capacitive sensing \cite{Rekimoto:2001:GGU:580581.856565}, vision \cite{Dementyev:2014:WLG:2642918.2647396}, and force sensing approaches \cite{Fukui:2011:HSC:2030112.2030154} have been used to sense changes in the physical properties of the wrist. Because of the reduced movement of the tendons compared to finger sensing, these approaches provide significantly lower accuracy even with a small number of gestures (2, 5, and 8 gestures respectively).
 
 % Arm-based gestural interfaces employ electromyographical sensing technique where a device is placed right on the arm \cite{Myo} or below the elbow \cite{Saponas:2009:EAI:1622176.1622208} to measure electrical potential differences between pairs of electrodes. Such interfaces usually support gestures involving full hand movements (e.g., clenched fist and splayed fingers) or arm movements at a fairly high accuracy rate. However, finer gestures involving single finger movements are not discernible to such devices.
 
 % Arm-based gestural interfaces usually equipped on the arm measure muscle signals caused by hand gestures \cite{Myo} \cite{Saponas:2009:EAI:1622176.1622208}. Such interfaces usually support gestures involving full hand movements (e.g., clenched fist and splayed fingers) or arm movements at a fairly high accuracy rate. However, finer gestures involving single finger movements are not discernible to such devices.
 
-Devices with arm-based signal source usually equipped on the arm measure muscle signals caused by hand gestures \cite{Myo} \cite{Saponas:2009:EAI:1622176.1622208}. Such interfaces usually support gestures involving full hand movements (e.g., clenched fist and splayed fingers) or arm movements at a fairly high accuracy rate. However, finer gestures involving single finger movements are not discernible to such devices.
+Arm-based sensing measures electromyography (EMG) caused by hand gestures \cite{Myo} \cite{Saponas:2009:EAI:1622176.1622208}. It senses full hand movements (eg. clenched fist and splayed fingers) better than finer gestures such as moving a single finger.
 
-Among the previous works, \autoref{fig:HandTarget} shows the three common body parts as the input signal sources of various sensing techniques. It is concluded that in general the closer the source is to the fingers, the greater the accuracy rate of finer gesture recognition is obtained, and vice versa. For practical usage, a tradeoff (e.g., measurement accuracy rate versus comfort, measurement accuracy rate versus expense, computational overhead versus comfort) must be considered among the countless related works. In this work, we manage to combine the beneficial characteristics of these works through a different approach by exploring another potential body part, the back of the hand, as an input source other than those listed in \autoref{fig:HandTarget}.
+As shown in \autoref{fig:HandTarget}, the back of the hand is closer to fingers, and the movement of tendons can observed and sensed more clearly than at the wrists and forearm. Sensors placed at this location also do not interfere with finger movement nor reduce the sense of touch compared to glove-based approaches. In this work, we explore sensing the back of hands for hand gesture detection.
 
 % To gather high accuracy information of hand movements, one approach is to instrument the hand with a glove-based gestural interface which is equipped with a number of sensors which provide information about hand position, orientation, and bending angles of fingers. Although these data glove-like systems are different in sensor technologies, locations, and mounting, they all share three basic design concepts: they measure finger joint bending, use a cloth for supporting sensors, and are usually meant to be general-purpose devices \cite{4539650}. 
 
@@ -212,20 +206,20 @@ Among the previous works, \autoref{fig:HandTarget} shows the three common body p
  
 %  我們用這樣的裝置，來探索在手背這樣寬廣且平坦的地方，哪裡最適合放置感應裝置。
 
-\getTitleName\ is an elegant and powerful gestural interface that falls into a new category of input signal source as the back of hand. The prototype consisting of an artificial skin where an array of strain sensors is attached measures physical changes on the back of hand.
+Our prototype, \getTitleName, uses a total of 19 strain sensors in a 2-row configuration to measure the physical changes on the back of hands. [add implementation summary]. To better understand the areas that provide better [TODO: describe the studies in more details and present the results].
 
 % There are also several reasons to choose the back of hand as the source of sensor's input signal:
 
-There are also three reasons to choose the back of hand as the source of sensor's input signal: (1) minimum user interference, (2) minimum device interference, and (3) high accuracy rate. 
+%There are also three reasons to choose the back of hand as the source of sensor's input signal: (1) minimum user interference, (2) minimum device interference, and (3) high accuracy rate. 
 
-First, user interference is a noise caused by a wearer. Interactions with tangible objects often interfere with the sensing operation.
-For instance, a grasp of an object blocks the camera worn on the wrist capturing finger movements.
-Sensors attached to joints could also cause false detection by a joint movement.
-For another instance, physical wrist movements can cause unintended results to the wrist-based signal source device. Sensing physical changes on the back of hand are less subject to such technical limitations. 
+%First, user interference is a noise caused by a wearer. Interactions with tangible objects often interfere with the sensing operation.
+%For instance, a grasp of an object blocks the camera worn on the wrist capturing finger movements.
+%Sensors attached to joints could also cause false detection by a joint movement.
+%For another instance, physical wrist movements can cause unintended results to the wrist-based signal source device. Sensing physical changes on the back of hand are less subject to such technical limitations. 
 
-Second, device interference is a factor positively related to user's discomfort. The back of hand without joints is a surface with less curvature and has less chance of physical contact with other objects under most circumstances. Moreover, unlike fingers and palms, the back of hand is not a body part effectively for productivity and interactions with tangible objects. Hence, sensing on the back of hand do not reduce dexterity of the hands and contribute less discomfort and less degradation of tactile sensation compared to that of glove-like devices.
+%Second, device interference is a factor positively related to user's discomfort. The back of hand without joints is a surface with less curvature and has less chance of physical contact with other objects under most circumstances. Moreover, unlike fingers and palms, the back of hand is not a body part effectively for productivity and interactions with tangible objects. Hence, sensing on the back of hand do not reduce dexterity of the hands and contribute less discomfort and less degradation of tactile sensation compared to that of glove-like devices.
 
-Third, finger-based gestural interfaces are with high accuracy rates. A nearby location to the fingers is the back of hand abound with tendons involving finger flexions. Our measurement accuracy rate is greater than 85\% in a 10-fold cross validation.
+%Third, finger-based gestural interfaces are with high accuracy rates. A nearby location to the fingers is the back of hand abound with tendons involving finger flexions. Our measurement accuracy rate is greater than 85\% in a 10-fold cross validation.
 %First, strain sensors placed on the back of hand are less prone to false detection and ____ caused by the user's daily-life behaviour.
 %First, joint movement of body parts such as fingers, wrist, and arm interacting with tangible objects usually interfere with its sensing operation.
 
@@ -244,15 +238,15 @@ Third, finger-based gestural interfaces are with high accuracy rates. A nearby l
 % an evaluation of the levels of recognition accuracy and performance,
 % and a set of applications and broader interactions with the different usage scenarios that are enabled by \getTitleName.
 
-Contributions of this paper are the followings:
+Contributions of this paper are:
 %請把上一段落變成列點式：
 \begin{itemize}
-\item We explored a new signal source, the back of hand, for gestural input.
-\item We proposed a prototype utilizing physical changes on the back of the hand to detect subtle hand gestures. 
+\item We explored a new signal source, the back of hand, for hand gesture detection.
+\item We developed a prototype using strain sensors that can sense a large variety of gestures at higher accuracy than wrist and arm-based approaches. 
 % \item We performed user study to address optimal strain sensor placement on the back of hand.
-\item We performed user study to seek the optimal sensing location on the back of hand.
+\item We identified the optimal sensing location on the back of hand to be near the metacarpophalangeal (MCP) joints.
 % \item We ... associated hardware and software design spaces.
-\item We implemented a set of applications and broader interactions with the different usage scenarios that are enabled by \getTitleName.
+%\item We implemented a set of applications and broader interactions with the different usage scenarios that are enabled by \getTitleName.
 \end{itemize}
 
 \section{RELATED WORK}
