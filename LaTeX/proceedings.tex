@@ -86,25 +86,7 @@ DOI: http://dx.doi.org/10.1145/2807442.2807462}
 \maketitle
 
 \begin{abstract}
-% In this paper we present HandTie, a body-worn gestural interface. 
-% Using an array of strain gauge (SG) attach on back of the hand, 
-% the interface can distinguish subtle and robust gestures with high accuracy and speed. 
 
-% The system is trained to classify gestures from subtle tendon movements on back of hand. 
-% We demonstrate that HandTie is a complete system that works wirelessly in real-time. 
-% The system is simple and light-weight in terms of power consumption and computational overhead. 
-% We perform user studies to explore the influence of various gesture on the back of the hand and evaluate the accuracy, speed, and repeatability. 
-% We conclude by showing example applications.
-
-% In this paper, we propose a potential input signal source, the back of hand, for gestural interface.
-% We develop a prototype, \getTitleName, using an array of strain gauge (SG) sensors affixed to the back of hand to demonstrate one of the sensing techniques to extract signals from such body part.
-% The signals extracted from the back of hand are training data and test data for gestural classification. Based on the results of the average accuracy rate of 10-fold cross validations of all 10 participants, we are able to determine the optimal sensing location on the back of hand and the feasibility of utilizing such signal source.
-% The signals extracted from the back of hand are data for gestural classification.
-% The optimal sensing location on the back of hand is determined based on the results of the highest mean accuracy rate (?\%) of 10-fold cross validations of all 10 participants performing 16 gestures in our user study.
-% We also conduct a user study with 10 participants to provide an optimal sensing location on the back of hand at a 95.8\% accuracy rate for 16 common gestures.
-% The result of leave-one-user-out cross validation shows that each individual has his unique physical pattern on the back hand when performing a gesture.
-% A comparison between our prototype and a device using wrist-based signal source verifies that the accuracy rate of gesture recognition is higher by extracting signals from the back of the hand than that from the wrist (?\% vs ?\%).
-% We conclude by showing example applications.
 In this paper, we explore using the back of hands for sensing hand gestures, which interferes less than glove-based approaches and provides better recognition than sensing at wrists and forearms. 
 Our prototype, \getTitleName, uses an array of strain gauge sensors affixed to the back of hands, and applies machine learning techniques to recognize a variety of hand gestures.
 
@@ -121,9 +103,6 @@ We conducted a user study with 10 participants to better understand gesture reco
 %   (e.g. HCI)}{Miscellaneous} \category{See
 %   \url{http://acm.org/about/class/1998/} for the full list of AC
 %   classifiers. This section is required.}{}{}
-
-%直接用target sensing的位置去分類，分三類，手指、手腕、手臂
-%可以說手指偵測就得直接裝在手指上，不然就是CV的太耗電問題。可是戴在手腕上和戴在手臂上會不準，小動作偵測不到。
 
 
 \section{Introduction}
@@ -162,8 +141,7 @@ Contributions of this paper are:
 \item We explored a new signal source, tendon activities on the back of hand, for hand gesture recognition.
 \item We developed a prototype using strain sensors that can sense a large variety of gestures per user at higher accuracy than wrist-based approaches. 
 \item We identified the most promising location in row configuration on the back of hand to be near the metacarpophalangeal (MCP) joints.
-% \item We ... associated hardware and software design spaces.
-%\item We implemented a set of applications and broader interactions with the different usage scenarios that are enabled by \getTitleName.
+
 \end{itemize}
 
 
@@ -191,8 +169,6 @@ Instead of providing high-accuracy sensing, GestureWrist \cite{Rekimoto:2001:GGU
 
 Arm-based hand gesture interface is another approach to explore hands-free and implement-free input techniques. Some research projects based on muscle-computer interface \cite{Saponas:2009:EAI:1622176.1622208} use forearm electromyography to decode the signal from motor neurons associated with muscle activation and recognize four-finger pinch gestures at an accuracy rate of 79\%. A commercial product named Myo \cite{Myo} also uses EMG for gesture detection. However, finer gestures involving single finger movements are not discernible to such devices. In addition, compared to the aforementioned interfaces, EMG systems require high data rate and have high power consumption due to extensive signal processing. 
 
-% Among the previous works, \autoref{fig:HandTarget} shows the three common body parts as the input signal sources of various sensing techniques. It is concluded that in general the closer the source is to the fingers, the greater the accuracy rate of finer gesture recognition is obtained, and vice versa. For practical usage, a tradeoff (e.g., measurement accuracy rate versus comfort, measurement accuracy rate versus expense, computational overhead versus comfort) must be considered among the countless related works. In this work, we manage to combine the beneficial characteristics of these works through a different approach by exploring another potential body part, the back of the hand, as an input source other than those listed in \autoref{fig:HandTarget}.
-
 As mentioned above, these interfaces with a variety of sensing technologies in different places to assess finger movement are the most common approaches to recognize hand gestures. However, \getTitleName\ senses hand gestures by exploring the back of hand which is not in the three classifications. We achieved 95.8\% average accuracy for 16 popular hand gestures when personalized for each participant. Additionally, we are not aware of any research that explored the back of hand to recognize hand gestures.
 
 \begin{figure}[b]
@@ -208,19 +184,15 @@ As mentioned above, these interfaces with a variety of sensing technologies in d
 Physical changes on the back of hand caused by finger motions and gestures are visible to the human eye. However, there is still difficulty on detecting it through most sensing techniques because such physical changes are very small in comparison to that of finger joint movements. Moreover, physical changes on the back of hand varies from person to person. Accordingly, we have two major requirements. First, a small and light device must be able to sense small physical changes. Second, a device must be able to extract individual information from multiple spots on the back of a human hand. Among a variety of sensing techniques, we conclude that strain gauge sensors best fit our requirements for this prototype.
  
 \subsection{Hardware} 
-% 待完成事項：
-% 1. 縮小版電路
-% 2. 消耗電量
-% 3. 人工皮載具圖片
+
 Strain gauge sensors are sensitive devices used to measure very small strain and elongation of an object such as buildings, foundations, and other structures. In order to accomplish such measurement, a strain gauge must be adhesively attached to the object. Any tension or compression on the object leads to changes in the electrical resistance of the sensor.
 
 \begin{figure}[t]
-  \includegraphics[width=1\columnwidth]{figures/CompleteDiagram_v2.pdf}
+  \includegraphics[width=1\columnwidth]{figures/CompleteDiagram_v3.pdf}
   \caption{The complete circuit diagram. Note that SG stands for strain gauge. The 24:1 analog multiplexer is practically made up of 3 analog multiplexers.}
   \label{fig:completeCircuitDiagram}
 \end{figure}
 
-% 需要解釋為什麼要19個應變規
 In our prototype, the sensing stage of our prototype consists of a reusable hydrogel-based artificial skin and 19 120-ohm 2-mm strain gauge sensors. The artificial skin is attached to the back of hand and acts as a sensor carrier. As shown in \autoref{fig:tie}, the sensors are distributed into a 2-row configuration. The following sentences explain for such sensor layout. An average of human hand width is approximately 81 mm \cite{Kulaksiz2002257}, and the base length of a 2-mm strain gauge is 6.3 mm. In order to avoid physical contact between any two neighboring sensors in a row causing strain interference, a spaced interval of 2 mm separates them, resulting in 10 strain gauges in a row across the hand width. Without the loss of strain measurement along the vertical direction between the two neighboring sensors, a second row with 9 sensors, each of which is vertically aligned with each center of the spaced intervals on the first row, is placed under the first row. The sensor array measures the deformations of multiple individual spots of the artificial skin caused by physical changes on the back of hand. Thus, our prototype is made possible to become a hand gesture interface for general users.
 
 \begin{figure}[b]
@@ -241,10 +213,13 @@ A support vector machine (SVM) is a novel supervised learning method that basica
 We used LIBSVM tool \cite{CC01a}, an open source library for SVM. 
 We scale each feature to the range of 0 to 1 and then train a multi-class SVM classifier with a Radial Basis Function (RBF) kernel.
 
-% \section{EVALUATION: OPTIMAL SENSOR PLACEMENT}
+
 \section{EVALUATION: MOST PROMISING LOCATION}
 
-The purpose of this evaluation is to investigate the accuracy of several row configurations ranging from back of the hand to wrist, and to uncover the most promising location that maximizes the performance of identifying hand gestures. Based on our observation and assumption of the anatomy of finger tendon networks, a row configuration laying across the hand width is the most intuitive pattern to capture all tendon and muscle activities caused by movements of each finger. Although it is reasonable that the highest accuracy rate (e.g. \textgreater90\%) may occur by covering the entire hand full of sensors, reaching high accuracy rate with less coverage area is worthy of being studied.
+The purpose of this evaluation is to investigate the accuracy of several row configurations ranging from back of the hand to wrist, and to uncover the most promising location that maximizes the performance of identifying hand gestures. 
+
+Based on our observation and assumption of the anatomy of finger tendon networks, a row configuration laying across the hand width is the most intuitive pattern to capture all tendon and muscle activities caused by movements of each finger. Although it is reasonable that the highest accuracy rate (e.g. \textgreater90\%) may occur by covering the entire hand full of sensors, reaching high accuracy rate with less coverage area is worthy of being studied.
+
 In addition, we provide the accuracy rates of each row configuration and visualizations of physical changes on the back of hand caused by gestures that are collected from all participants. These can enable us to understand, illustrate, and provide insights into the physical properties of the back of hand. %by collecting data
 
 \subsection{Study Design}
@@ -295,7 +270,7 @@ Initially, 8 rows (16 positions) across participants’ back of the hand were un
 We then affixed the artificial skin composed of arrays of strain gauges to these 8-row markers on the right hand for 4 rounds (2 rows each time). At each round, each participant performed each of 16 gestures from on-screen instructions. Each gesture was collected 10 times. Each of them was sampled at 10 Hz in a duration of 2 seconds.
 The order of the gestures was randomly selected. 
 Overall, the study took approximately 80 minutes per participants.
-% For the evaluation, each participant then performed the similar task as training sessions. Each gesture was done 7 times.The instructions for each specific gesture were displayed but without showing what the gesture was classified. 
+
 \vspace{10mm}
 
 \begin{figure*}[t]
@@ -309,25 +284,7 @@ Overall, the study took approximately 80 minutes per participants.
 
 \subsection{Results}
 
-% To delve into the optimal sensor placement, we tested all the configurations of the 8 rows obtained from each participant, generating 15 possible subsets including 8 1-row configurations (from 0 to 7) and 7 2-row configurations (e.g., row-01, 12, 23, 34, 45, 56, 67).
-%It represents the upper bound of accuracy.On the other hand, we computed accuracy using the external 7 times testing dataset, which reflects the real-time performance of the system. In this case, the accuracy was 91.17\% (SD: ±3.88\%).
 Our results consist mainly three parts. The first part is a visualization of physical changes on the back of hand. The second part is a leave-one-user-out cross validation to test the feasibility of building a general model across participants. The last part is the determination of the most promising location through a personalized gestural recognition accuracy.
-
-
-\subsubsection{Heat Map Visualization}
-%Each color in a block of a heat map represents a strain gauge sensor value. The heat map color spectrum ranges from red to blue standing for the two extreme states of tension and compression.
-The visualization is shown in heat maps which display a block with highest tension sensor value as red and highest compression value as blue. The color green represents the neutral state (without tension and compression) of a strain gauge. Other blocks with colors in-between the extremes of red and blue on the color spectrum feature sensor values between the highest tension value and highest compression value.
-
-\autoref{fig:user16GesturesSV}\ showing all 16 gestures performed by a participant implies that every pattern on the back of the hand has its unique gesture model inside it.
-\autoref{fig:Num8Gesture}\ and \autoref{fig:SVisualNew}\ indicate heat maps of a gesture of ``8'' performed by participants.
-From \autoref{fig:Num8Gesture}(B), the strain sensors attached along with the prominent, superficial tendon of middle finger are stretched, while sensors in-between tendons are compressed.
-% The sensor reading patterns are significantly different across 10 participants in \autoref{fig:SVisualNew}(A) but consistent for a single user in \autoref{fig:SVisualNew}(B).
-\autoref{fig:SVisualNew}(B) indicates the consistent reading patterns for a single user concluding the stability to utilize such signal source.
-The sensor reading patterns are significantly different across 10 participants in \autoref{fig:SVisualNew}(A) implying the difference of both the prominence of tendons and the physical appearance of finger tendon networks among individuals.
-% Based on the observations and results of the visualization, it is not difficult to find the reason why \getTitleName\ can be used to detect hand gesture due to each tendon activities on the back of hand while performing hand gesture.
-The measurements of tendon activities contribute the visualization which leads to a better understanding of the back of hand that in turn possesses a potential for hand gesture recognition.
-% Based on the observations and results of the visualization, it is not difficult to find the reason why \getTitleName\ can be used to detect hand gesture due to each tendon activities on the back of hand while performing hand gesture. 
-%我們透過觀察以及視覺化的圖像疊合於手背，不難發現其實 我們之所以能透過prototype辨識手勢 就是藉由 當做出手勢時「手背肌腱或肌肉」個別程度起伏。
 
 \begin{figure}[t]
  \begin{center}
@@ -340,11 +297,9 @@ The measurements of tendon activities contribute the visualization which leads t
   \end{center}
 \end{figure}
 
+\subsubsection{Heat Map Visualization}
 
-\subsubsection{Accuracy Rates}
-We tested all 15 possible row configurations for determining minimum strain sensor coverage area on the back of hand including 8 single-row configurations (from row-0 to row-7) and all 7 two-adjacent row configurations (row-01, row-12, row-23, row-34, row-45, row-56, and row-67) of sensing locations from each participant.
-
-To understand how physical changes on the back of hand vary from person to person, the results of a leave-one-user-out cross validation are shown in \autoref{fig:LOO} where the value of each bar is an average of test results of each participant validated by the other 9 participants' training model of a row configuration on the back of the hand. The highest accuracy rate of 27.4\% occurs at the location of row-23. Hence, the low accuracy rates imply that physical patterns on the back of hand are likely to be in low similarity among individuals.
+The visualization is shown in heat maps which display a block with highest tension sensor value as red and highest compression value as blue. The color green represents the neutral state (without tension and compression) of a strain gauge. Other blocks with colors in-between the extremes of red and blue on the color spectrum feature sensor values between the highest tension value and highest compression value.
 
 \begin{figure}[t]
  \begin{center}
@@ -357,20 +312,35 @@ To understand how physical changes on the back of hand vary from person to perso
   \end{center}
 \end{figure}
 
-Based on the results from the leave-one-user-out cross validation, constructing a generalized model across general users is highly unlikely. Therefore, we delve into personalized accuracy rates and the aim for a most promising location.
-% We tested all 15 possible row configurations for determining minimum strain sensor coverage area on the back of hand including 8 single-row configurations (from row-0 to row-7) and all 7 two-adjacent row configurations (row-01, row-12, row-23, row-34, row-45, row-56, row-67) of sensing locations from each participant.
-% Each generated subset was evaluated based on a 10-fold cross validation where each fold contains data from a single trial is the test data validated by a training model constructed by other 9 folds.% containing data from the rest of the trials.
-Each row configuration was evaluated based on a 10-fold cross validation where each fold contains data from a single trial of a single participant.
+\autoref{fig:user16GesturesSV}\ showing all 16 gestures performed by a participant implies that every pattern on the back of the hand has its unique gesture model inside it.
+\autoref{fig:Num8Gesture}\ and \autoref{fig:SVisualNew}\ indicate heat maps of a gesture of ``8'' performed by participants.
+From \autoref{fig:Num8Gesture}(B), the strain sensors attached along with the prominent, superficial tendon of middle finger are stretched, while sensors in-between tendons are compressed.
+% The sensor reading patterns are significantly different across 10 participants in \autoref{fig:SVisualNew}(A) but consistent for a single user in \autoref{fig:SVisualNew}(B).
+\autoref{fig:SVisualNew}(B) indicates the consistent reading patterns for a single user concluding the stability to utilize such signal source.
+The sensor reading patterns are significantly different across 10 participants in \autoref{fig:SVisualNew}(A) implying the difference of both the prominence of tendons and the physical appearance of finger tendon networks among individuals.
+% Based on the observations and results of the visualization, it is not difficult to find the reason why \getTitleName\ can be used to detect hand gesture due to each tendon activities on the back of hand while performing hand gesture.
+The measurements of tendon activities contribute the visualization which leads to a better understanding of the back of hand that in turn possesses a potential for hand gesture recognition.
 
-\begin{figure*}
+\subsubsection{Accuracy Rates}
+We tested all 15 possible row configurations for determining minimum strain sensor coverage area on the back of hand including 8 single-row configurations (from row-0 to row-7) and all 7 two-adjacent row configurations (row-01, row-12, row-23, row-34, row-45, row-56, and row-67) of sensing locations from each participant.
+
+\begin{figure*}[t]
  \begin{center}
-  \includegraphics[width=2\columnwidth]{figures/10FCV_16_v2.pdf}
+  \includegraphics[width=2\columnwidth]{figures/10FCV_16_v3.pdf}
   \caption{
     The result of the average of 10-fold cross validations of all 10 participants. The value of each bar is an average of personalized accuracy rate in 10-fold cross validation of a row configuration across all participants.
   }
   \label{fig:accuracy16Gs}
   \end{center}
 \end{figure*}
+
+To understand how physical changes on the back of hand vary from person to person, the results of a leave-one-user-out cross validation are shown in \autoref{fig:LOO} where the value of each bar is an average of test results of each participant validated by the other 9 participants' training model of a row configuration on the back of the hand. The highest accuracy rate of 27.4\% occurs at the location of row-23. Hence, the low accuracy rates imply that physical patterns on the back of hand are likely to be in low similarity among individuals.
+
+Based on the results from the leave-one-user-out cross validation, constructing a generalized model across general users is highly unlikely. Therefore, we delve into personalized accuracy rates and the aim for a most promising location.
+% We tested all 15 possible row configurations for determining minimum strain sensor coverage area on the back of hand including 8 single-row configurations (from row-0 to row-7) and all 7 two-adjacent row configurations (row-01, row-12, row-23, row-34, row-45, row-56, row-67) of sensing locations from each participant.
+% Each generated subset was evaluated based on a 10-fold cross validation where each fold contains data from a single trial is the test data validated by a training model constructed by other 9 folds.% containing data from the rest of the trials.
+Each row configuration was evaluated based on a 10-fold cross validation where each fold contains data from a single trial of a single participant.
+
 % We average the accuracy rates of each of the 10 folds in cross validations.
 First, we average the accuracy rates of each of the 10 folds in a cross validation for a row configuration of a single participant.
 Second, we take the average of the accuracy rates of a row configuration across 10 participants, and the overall accuracy rate of a row configuration is obtained.
@@ -378,14 +348,9 @@ Such computational process is repeated to retrieve the overall accuracy rates of
 The best results are obtained with a selection of highest mean accuracy rate of a row configuration across all participants.
 In 10-fold cross validation shown in \autoref{fig:accuracy16Gs}, the mean accuracy rate of the best result among 15 row configurations across all participants is 95.8\% (SD: ±3.14\%).
 
-The results show that
-(1) the configuration row-12 has the highest accuracy rate, indicating the most promising location is not on the closest row to the finger joints but second to it. 
-(2) The accuracy rate of each single-row configuration is lower than that of its adjacent 2-row configuration. For example, the accuracy rate of configuration row-1 is lower than that of row-01 and row-12. Hence, the greater sensing resolution, the greater the accuracy rate is obtained. 
-(3) The accuracy rates decrease along the rows as approaching to the wrist where physical signals become unrecognizable among hand gestures.
-
 \begin{figure}[t]
  \begin{center}
-  \includegraphics[width=1\columnwidth]{figures/LOO_V2.pdf}
+  \includegraphics[width=1\columnwidth]{figures/LOO_V3.pdf}
   \caption{
     The result of the average of leave-one-user-out cross validations of all 10 participants.
     % The value of each bar is an average of test results of each participant at a location on the back of hand.
@@ -394,6 +359,11 @@ The results show that
   \label{fig:LOO}
   \end{center}
 \end{figure}
+
+The results show that
+(1) the configuration row-12 has the highest accuracy rate, indicating the most promising location is not on the closest row to the finger joints but second to it. 
+(2) The accuracy rate of each single-row configuration is lower than that of its adjacent 2-row configuration. For example, the accuracy rate of configuration row-1 is lower than that of row-01 and row-12. Hence, the greater sensing resolution, the greater the accuracy rate is obtained. 
+(3) The accuracy rates decrease along the rows as approaching to the wrist where physical signals become unrecognizable among hand gestures.
 
 \section{DISCUSSION}
 
@@ -406,7 +376,13 @@ Our discussion is divided into three subsections.
 First of all, we show all the classification rates for 16 gestures through confusion matrix for better insight into the differences and similarities among hand shapes.
 Secondly, we reduce the number of gestures to 5 in order to present its performance under a different scenario for small numbers of gestures.
 Thirdly, prototype limitations are listed to address some main factors for improvement.
-
+\begin{figure}[h]
+  \begin{center}
+  \includegraphics[width=1\columnwidth]{figures/CM_row12_v2.pdf}
+  \caption{Confusion matrix for accuracies using training data from the row configuration of row12.}
+  \label{fig:CM_row12}
+  \end{center}
+\end{figure}
 \subsection{Confusion Matrix}
 
 A confusion matrix shown in \autoref{fig:CM_row12}\ describes the misclassification rates of the gestures using the configuration row-12.
@@ -416,13 +392,7 @@ Another reason for misclassification is associated with weak physical signals.
 For example, the ``L'' gesture has a true positive rate (90.2\%) and a false negative rate of 5.1\% for being classified as the ``ILY'' gesture likely because the  physical changes caused by movements of the pinky finger are less obvious compared to that of other fingers. Therefore, an increase in the amplifier gain leads to a better effectiveness in extracting weak signals.
 % Overall, most of 16 gestures have a true positive rate greater than 90\% from which it is reasonable to infer that the back of hand is an excellent signal source for a gestural interface.
 Overall, the true positive recognition rates are greater than 90\% for 15 gestures and 95\% for 12 gestures out of 16 gestures. From such result, it is reasonable to infer that the back of hand is an excellent signal source for a hand gesture interface.
-\begin{figure}[hb]
-  \begin{center}
-  \includegraphics[width=1\columnwidth]{figures/CM_row12_v2.pdf}
-  \caption{Confusion matrix for accuracies using training data from the row configuration of row12.}
-  \label{fig:CM_row12}
-  \end{center}
-\end{figure}
+
 \subsection{Signal Source Comparison}
 To verify our assumption that the closer the signal source is to the fingers, the greater the accuracy rate of finer gesture recognition is obtained, a comparison is made with a related work \cite{Dementyev:2014:WLG:2642918.2647396} as in which we use the exact same setup except for the on-screen feedback. Currently, WristFlex \cite{Dementyev:2014:WLG:2642918.2647396} is a work with the highest accuracy rates (\textgreater80\%) supporting the ample number of gestures (5 gestures) among other works using wrist-based signal source.
 % To verify our results that the closer the signal source is to the wrist, a significant decrease in accuracy rate of gesture recognition is obtained, a comparison is made with a related work, WristFlex, as in which we use the exact same setup except for an on-screen feedback.
@@ -441,7 +411,7 @@ The signals from the sensors must undergo stages of signal processing and condit
 %\vspace{10mm}
 \begin{figure}[h]
   \begin{center}
-  \includegraphics[width=1\columnwidth]{figures/apps.jpg}
+  \includegraphics[width=1\columnwidth]{figures/appsV2.jpg}
   \caption{(A) A musical performance application turns the hand into a musical instrument. Gestures are translated into musical notes. (B) A smartwatch control provides a more user friendly, intuitive hand gesture interface.}
   \label{fig:APPS}
   \end{center}
@@ -450,7 +420,7 @@ The signals from the sensors must undergo stages of signal processing and condit
 \section{EXAMPLE APPLICATIONS}
 
 In additional to gesture recognition for general applications, we broadened the application of \getTitleName\ by showing a musical performance application and smartwatch control using static and dynamic gestures, respectively.
-
+\vspace{10mm}
 \subsection{Musical Performance}
 % \getTitleName\ can distinguish the small difference among the hand gestures. We develop an application that hands become the musical instrument and the designated gestures will be translated to different musical notes. Tip segments of first, second, third,  little fingers and bottom segments of first, second, third fingers are Do, Re, Mi, Fa, Sol, La, Ti in C major respectively. By the system, hands are  wearable musical instrument and users can easily play them.
 
